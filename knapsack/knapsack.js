@@ -20,7 +20,9 @@ function knapSack(weightCap, weights, values) {
             // w is 0 => we have no weight capacity
             if (i==0 || w==0) {
                 table[i][w] = 0;
+                // alternatively  use Array.fill(0)
             } else if (weights[i-1] <= w) {
+                // i-1 represents all previous items already in the bag or discarded (processed)
                 var valueIfITakeIt = values[i-1] + table[i-1][w-weights[i-1]];
                 var valueIfIDont= table[i-1][w];
                 table[i][w] = Math.max(valueIfITakeIt, valueIfIDont) ;
